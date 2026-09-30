@@ -804,23 +804,40 @@ window.AnNhienVillage368={ensure:v368Ensure,open:v368Open,render:v368Render,buil
 </script>
 
 <script>
-window.AN_NHIEN_FRONTEND_FINGERPRINT="3.71|GOOGLE-ACCOUNT-CLOUD-PROGRESS-SYNC-2026.09.30.1|2026-09-30 16:20 GMT+7";
-document.documentElement.setAttribute("data-an-build","3.71");
+window.AN_NHIEN_FRONTEND_FINGERPRINT="3.71.1|GITHUB-RUNTIME-AUTH-FIX-2026.09.30.1|2026-09-30 15:15 GMT+7";
+document.documentElement.setAttribute("data-an-build","3.71.1");
 </script>
 
 
 <script>
-/* GitHub Pages compatibility shim – V3.70 frozen learning trial */
+/* GitHub Pages compatibility shim – V3.71.1 runtime fix */
 (function(){
   if(!window.google) window.google={};
   if(!google.script) google.script={};
+  function frontendInfo(){
+    const x=window.AnNhienBuildInfo||window.AN_NHIEN_CANONICAL_VERSION||{};
+    return {ok:true,host:"github-pages",version:x.version||"3.71.1",
+      build:x.build||"GITHUB-RUNTIME-AUTH-FIX-2026.09.30.1",
+      builtAt:x.builtAt||"2026-09-30 15:15 GMT+7"};
+  }
   if(!google.script.run){
+    let success=null,failure=null;
     const chain={
-      withSuccessHandler:function(){return chain},
-      withFailureHandler:function(){return chain},
-      getVersionInfo:function(){return null},
-      getAppInfo:function(){return null},
-      ping:function(){return null}
+      withSuccessHandler:function(fn){success=typeof fn==="function"?fn:null;return chain},
+      withFailureHandler:function(fn){failure=typeof fn==="function"?fn:null;return chain},
+      _ok:function(value){
+        const cb=success;success=null;failure=null;
+        setTimeout(function(){try{if(cb)cb(value)}catch(e){console.error("GAS shim success handler",e)}},0);
+        return null;
+      },
+      getVersionInfo:function(){return chain._ok(frontendInfo())},
+      getAppInfo:function(){return chain._ok(frontendInfo())},
+      getAppBuildInfo:function(){return chain._ok(frontendInfo())},
+      getRuntimeHealth:function(){
+        const i=frontendInfo();
+        return chain._ok({ok:true,host:"github-pages",mode:"static",version:i.version,build:i.build});
+      },
+      ping:function(){return chain._ok({ok:true,host:"github-pages"})}
     };
     google.script.run=chain;
   }
@@ -852,7 +869,7 @@ document.documentElement.setAttribute("data-an-build","3.71");
 <div class="v314-card"><div class="v314-meter"><i id="v314Meter" style="width:0%"></i></div><div id="v314Mission" style="margin-top:8px">Chivas đang chuẩn bị khu vườn...</div><div id="v314Question" style="font-size:29px;font-weight:950;margin:9px"></div><div id="v314Answers" class="v314-answers"></div><div id="v314Feedback"></div></div>
 </div></div><div id="v313World" class="v313-world"><div class="v313-panel"><div class="v313-top"><div><b>🗺️ Cuộc săn kho báu của Chivas</b><div id="v313Stats">0/6 mảnh bản đồ</div></div><button data-an-kingdom="1" id="v313Close" class="v313-close">✕ Về Vương Quốc</button></div><div id="v313Map" class="v313-map"><div class="v313-path"></div><div id="v313Chivas" class="v313-chivas">🐶</div></div><div class="v313-card"><div id="v313Story">Tìm đủ 6 mảnh bản đồ để mở rương kho báu.</div><div id="v313Question" style="font-size:30px;font-weight:950;margin:10px"></div><div id="v313Answers" class="v313-answers"></div><div id="v313Feedback"></div></div></div></div>
 <div class="v312-hud"><span class="v312-pill" id="v312Energy">⚡ 0</span><span class="v312-pill" id="v312Combo">✨ Combo 0</span><span class="v312-pill" id="v312Loot">🎒 0</span></div>
-<div id="v312Mission" class="v312-mission"><div class="v312-card"><button id="v312Close" style="float:right;border:0;background:#eee;border-radius:10px;padding:7px 10px">✕</button><div class="v312-scene" id="v312Scene">🌉</div><h2 id="v312Title">Nhiệm vụ cùng Chivas</h2><div class="v312-progress"><i id="v312Bar" style="width:0%"></i></div><div id="v312Body"></div><div class="v312-actions" id="v312Actions"></div></div></div><div id="v311Loop" class="v311-loop">🌱 Learning Loop · <strong>đang sẵn sàng</strong></div><div id="anToast" class="an-toast"></div><div class="app-version-badge" id="appVersionBadge" title="Build 2026.09.28.1">Version 3.71 · GOOGLE-ACCOUNT-CLOUD-PROGRESS-SYNC-2026.09.30.1</div><div class="app"><div class="sky"></div><header class="top"><div class="brand"><span class="mark">🌱</span><div>AN NHIÊN<small>VƯƠNG QUỐC TOÁN HỌC</small></div></div><div class="stats"><span class="pill">⭐ <b id="xp">0</b> XP</span><span class="pill">🔥 <b id="streak">0</b> ngày</span></div></header>
+<div id="v312Mission" class="v312-mission"><div class="v312-card"><button id="v312Close" style="float:right;border:0;background:#eee;border-radius:10px;padding:7px 10px">✕</button><div class="v312-scene" id="v312Scene">🌉</div><h2 id="v312Title">Nhiệm vụ cùng Chivas</h2><div class="v312-progress"><i id="v312Bar" style="width:0%"></i></div><div id="v312Body"></div><div class="v312-actions" id="v312Actions"></div></div></div><div id="v311Loop" class="v311-loop">🌱 Learning Loop · <strong>đang sẵn sàng</strong></div><div id="anToast" class="an-toast"></div><div class="app-version-badge" id="appVersionBadge" title="Build 2026.09.28.1">Version 3.71.1 · GITHUB-RUNTIME-AUTH-FIX-2026.09.30.1</div><div class="app"><div class="sky"></div><header class="top"><div class="brand"><span class="mark">🌱</span><div>AN NHIÊN<small>VƯƠNG QUỐC TOÁN HỌC</small></div></div><div class="stats"><span class="pill">⭐ <b id="xp">0</b> XP</span><span class="pill">🔥 <b id="streak">0</b> ngày</span></div></header>
 <section id="home" class="screen active"><div class="hero"><div><div class="eyebrow">HỌC NHẸ NHÀNG · NHỚ THẬT LÂU</div><h1>An Nhiên<br><span>Vương Quốc Toán Học</span></h1><p>Cùng Chivas khám phá những vùng đất kỳ diệu. Mỗi phép nhân con nhớ được sẽ giúp vương quốc lớn thêm một chút.</p><div class="hero-actions"><button class="btn" onclick="enterKingdom()">Bắt đầu phiêu lưu →</button><button class="btn secondary" onclick="showScreen('report');renderReport()">Xem tiến bộ</button></div><div id="v357HomeMount"></div></div><div class="world-card"><div class="river"></div><div class="hill a"></div><div class="hill b"></div><div class="bridge"><i></i><i></i><i></i><i></i><i></i></div><div class="chivas">🧙‍♂️</div><div class="world-label">Chivas đang chờ An Nhiên!</div></div></div></section>
 <section id="dashboard" class="screen"><div class="dashboard"><div class="hello"><div><div class="eyebrow">HÀNH TRÌNH HÔM NAY</div><h2>Chào An Nhiên! 👋</h2><p>Mình học từng chút thôi. Không cần vội nhé!</p></div><button class="back" onclick="showScreen('home')">⌂ Trang đầu</button></div><div class="daily"><div><div class="eyebrow">🎯 THỬ THÁCH MỖI NGÀY</div><h3>5 phút hôm nay</h3><div id="daily-copy">Chivas đã chọn những phép tính vừa sức với con.</div></div><button class="btn" onclick="startDaily()">Bắt đầu 5 phút</button></div><div class="section-title"><h3>🗺️ Bản đồ cửu chương</h3><div class="mastery-legend"><span class="badge">🌱 Làm quen</span><span class="badge">👀 Nhận biết</span><span class="badge">🧠 Ghi nhớ</span><span class="badge">⚡ Phản xạ</span><span class="badge">👑 Bậc thầy</span></div></div><div id="tables" class="tables"></div></div></section>
 <section id="lesson" class="screen"><div class="lesson"><div class="lesson-head"><button class="back" onclick="finishSession()">← Bản đồ</button><div><b id="lesson-title">Bảng ×2</b> · <span id="lesson-progress">1/10</span></div></div><div class="lesson-progressbar"><i id="lesson-bar"></i></div><div class="question-card" id="question-card"><div class="chivas-line"><span class="chivas-buddy">🧙‍♂️</span><span id="chivas-says">Chivas cùng học với An Nhiên nhé!</span></div><div id="stage" class="stage">NHÌN · HIỂU · NHỚ</div><div id="equation" class="equation">2 × 3 = ?</div><div id="visual" class="visual"></div><div id="answers" class="answers"></div><div id="input-wrap" class="input-answer" hidden><input id="answer-input" inputmode="numeric" pattern="[0-9]*" aria-label="Nhập đáp án"><button class="btn" onclick="submitInput()">Trả lời</button></div><div id="feedback" class="feedback"></div><div id="hint" class="hint" hidden></div><div class="footer-actions"><button id="hint-btn" class="btn secondary" onclick="showHint()">💡 Gợi ý</button><button id="next-btn" class="btn" onclick="nextQuestion()" hidden>Câu tiếp theo →</button></div></div></div></section>
@@ -861,7 +878,7 @@ document.documentElement.setAttribute("data-an-build","3.71");
 <script id="an-v3232-early-recovery">
 (function(){
  window.AnNhienBuildInfo=Object.freeze({
- version:"3.71", build:"GOOGLE-ACCOUNT-CLOUD-PROGRESS-SYNC-2026.09.30.1", builtAt:"2026-09-30 16:20 GMT+7", label:"Version 3.71 · GOOGLE-ACCOUNT-CLOUD-PROGRESS-SYNC-2026.09.30.1"
+ version:"3.71.1", build:"GITHUB-RUNTIME-AUTH-FIX-2026.09.30.1", builtAt:"2026-09-30 15:15 GMT+7", label:"Version 3.71.1 · GITHUB-RUNTIME-AUTH-FIX-2026.09.30.1"
 });
  window.__AN_REC={version:window.AnNhienBuildInfo.version,build:window.AnNhienBuildInfo.build,errors:[],stage:"HTML loaded",safe:false};
  function record(msg,src,line,col,err){
@@ -3758,7 +3775,7 @@ load();if(document.readyState==="loading")document.addEventListener("DOMContentL
  <div id="v3231DiagCard">
   <button id="v3231DiagClose" style="float:right">✕</button>
   <h2>🧪 Deployment Diagnostic</h2>
-  <div class="v3231row v3231ok"><b>Frontend:</b><br>Version 3.71 · GOOGLE-ACCOUNT-CLOUD-PROGRESS-SYNC-2026.09.30.1</div>
+  <div class="v3231row v3231ok"><b>Frontend:</b><br>Version 3.71.1 · GITHUB-RUNTIME-AUTH-FIX-2026.09.30.1</div>
   <div class="v3231row"><b>Build time:</b> 2026-09-29 16:49 GMT+7</div>
   <div class="v3231row" id="v3231Backend"><b>Backend:</b> đang kiểm tra…</div>
   <div class="v3231row" id="v3231Status"><b>Trạng thái:</b> chờ kiểm tra</div>
@@ -3780,8 +3797,14 @@ load();if(document.readyState==="loading")document.addEventListener("DOMContentL
    back.className="v3231row"; status.className="v3231row v3231warn";
    back.innerHTML="<b>Backend:</b> đang kiểm tra…";
    status.innerHTML="<b>Trạng thái:</b> đang đối chiếu Frontend ↔ Apps Script";
-   if(window.google&&google.script&&google.script.run){
-     google.script.run
+    if(window.AN_NHIEN_HOST_MODE==="github-pages"){
+      const info=FRONT;
+      back.className="v3231row v3231ok";
+      back.innerHTML="<b>Host:</b><br>GitHub Pages · Static runtime<br>Version "+info.version+" · "+info.build;
+      status.className="v3231row v3231ok";
+      status.innerHTML="<b>Trạng thái:</b> ✅ GitHub runtime sẵn sàng. Không cần Apps Script backend.";
+    } else if(window.google&&google.script&&google.script.run){
+      google.script.run
       .withSuccessHandler(function(info){
         const same=info&&info.version===FRONT.version&&info.build===FRONT.build;
         back.className="v3231row "+(same?"v3231ok":"v3231bad");
@@ -3824,7 +3847,7 @@ load();if(document.readyState==="loading")document.addEventListener("DOMContentL
 <div id="anRecovery">
  <div id="anRecoveryCard">
   <h1>🛟 An Nhiên Math – Recovery</h1>
-  <div class="anRecBox anRecOk"><b>Version 3.71 · GOOGLE-ACCOUNT-CLOUD-PROGRESS-SYNC-2026.09.30.1</b><br>2026-09-29 16:49 GMT+7</div>
+  <div class="anRecBox anRecOk"><b>Version 3.71.1 · GITHUB-RUNTIME-AUTH-FIX-2026.09.30.1</b><br>2026-09-29 16:49 GMT+7</div>
   <div class="anRecBox"><b>Trạng thái khởi động:</b><br><span id="anRecStage">Đang kiểm tra…</span></div>
   <div class="anRecBox anRecBad" id="anRecError"><b>Lỗi:</b><br>Chưa có chi tiết.</div>
   <div class="anRecBox"><b>URL:</b><br><span id="anRecUrl"></span></div>
@@ -3894,7 +3917,7 @@ load();if(document.readyState==="loading")document.addEventListener("DOMContentL
    el("anRecSafe").onclick=safe;
    el("anRecHome").onclick=recoverHome;
    el("anRecCopy").onclick=async function(){
-     const txt=`An Nhiên Math Runtime Recovery\nVersion 3.71 · GOOGLE-ACCOUNT-CLOUD-PROGRESS-SYNC-2026.09.30.1\nStage: ${R.stage}\nSafe: ${R.safe}\nURL: ${location.href}\nErrors:\n${R.errors.join("\n---\n")}`;
+     const txt=`An Nhiên Math Runtime Recovery\nVersion 3.71.1 · GITHUB-RUNTIME-AUTH-FIX-2026.09.30.1\nStage: ${R.stage}\nSafe: ${R.safe}\nURL: ${location.href}\nErrors:\n${R.errors.join("\n---\n")}`;
      try{await navigator.clipboard.writeText(txt);this.textContent="✅ Đã copy"}catch(e){this.textContent="Copy thất bại"}
    };
    setTimeout(bootCheck,2500);
@@ -4429,8 +4452,8 @@ window.AnNhienFarm329={open,render,collect};
 <script>
 /* V3.34.1 canonical version identity */
 window.AN_NHIEN_CANONICAL_VERSION = Object.freeze({
-  version:"3.71", build:"GOOGLE-ACCOUNT-CLOUD-PROGRESS-SYNC-2026.09.30.1", builtAt:"2026-09-30 16:20 GMT+7",
-  label:"Version 3.71 · GOOGLE-ACCOUNT-CLOUD-PROGRESS-SYNC-2026.09.30.1"
+  version:"3.71.1", build:"GITHUB-RUNTIME-AUTH-FIX-2026.09.30.1", builtAt:"2026-09-30 15:15 GMT+7",
+  label:"Version 3.71.1 · GITHUB-RUNTIME-AUTH-FIX-2026.09.30.1"
 });
 document.addEventListener("DOMContentLoaded", function(){
   const I=window.AN_NHIEN_CANONICAL_VERSION;
@@ -4702,9 +4725,9 @@ async function push(reason="manual"){
   if(!currentUser||busy)return false; busy=true;
   try{
     let x=readLocal(),now=Date.now();
-    x.__cloud=x.__cloud||{};x.__cloud.updatedAt=now;x.__cloud.uid=currentUser.uid;x.__cloud.version="3.71";x.__cloud.reason=reason;
+    x.__cloud=x.__cloud||{};x.__cloud.updatedAt=now;x.__cloud.uid=currentUser.uid;x.__cloud.version="3.71.1";x.__cloud.reason=reason;
     writeLocal(x);
-    await setDoc(await cloudRef(),{state:sanitize(x),updatedAtMs:now,updatedAt:serverTimestamp(),appVersion:"3.71"},{merge:true});
+    await setDoc(await cloudRef(),{state:sanitize(x),updatedAtMs:now,updatedAt:serverTimestamp(),appVersion:"3.71.1"},{merge:true});
     lastCloudUpdated=now; toast("☁️ Đã lưu tiến độ lên Cloud"); return true
   }catch(e){toast("⚠️ Chưa thể lưu Cloud. Dữ liệu vẫn còn trên máy.");return false}
   finally{busy=false;ui()}
@@ -4724,14 +4747,24 @@ async function pullAndMerge(){
     await push("merge-local-newer");return true
   }catch(e){toast("⚠️ Không tải được Cloud. Tiếp tục dùng dữ liệu trên máy.");return false}
 }
+function authErrorText(e){
+  const code=(e&&e.code)?String(e.code):"auth/unknown";
+  const msg=(e&&e.message)?String(e.message):"";
+  console.error("[V3.71.1 Firebase Auth]",code,msg,e);
+  return code+(msg?(" · "+msg.replace(/^Firebase:\\s*/,"").slice(0,150)):"");
+}
 async function login(){
   if(!configured){toast("⚙️ Hãy cấu hình firebase-config.js trước.");return}
+  if(!auth){toast("⚠️ Firebase Auth chưa khởi tạo.");return}
   const p=new GoogleAuthProvider();
   try{await signInWithPopup(auth,p)}
   catch(e){
     if(e&&["auth/popup-blocked","auth/cancelled-popup-request","auth/operation-not-supported-in-this-environment"].includes(e.code)){
-      await signInWithRedirect(auth,p)
-    }else toast("⚠️ Đăng nhập Google chưa thành công.")
+      try{await signInWithRedirect(auth,p)}
+      catch(r){toast("⚠️ Google: "+authErrorText(r))}
+    }else{
+      toast("⚠️ Google: "+authErrorText(e))
+    }
   }
 }
 async function logout(){if(auth)await signOut(auth);currentUser=null;ui();toast("Đã đăng xuất. Dữ liệu local vẫn được giữ.")}
@@ -4750,14 +4783,22 @@ document.addEventListener("DOMContentLoaded",mount);
 if(configured){
  try{
   app=initializeApp(CFG);auth=getAuth(app);db=getFirestore(app);
-  await getRedirectResult(auth).catch(()=>null);
+  await getRedirectResult(auth).catch(e=>{console.error("[V3.71.1 Firebase Redirect]",e&&e.code,e);setTimeout(()=>toast("⚠️ Google redirect: "+authErrorText(e)),300);return null});
   onAuthStateChanged(auth,async u=>{currentUser=u;ui();if(u)await pullAndMerge()});
   // Autosave after meaningful interaction, debounced.
   let timer=null;
   document.addEventListener("click",()=>{if(!currentUser)return;clearTimeout(timer);timer=setTimeout(()=>push("auto"),1800)},false);
   document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden"&&currentUser)push("background")});
- }catch(e){console.warn("V3.71 cloud init",e)}
+ }catch(e){console.warn("V3.71.1 cloud init",e)}
 }
+</script>
+
+<script>
+window.AN_NHIEN_V3711_PATCH={
+ version:"3.71.1",build:"GITHUB-RUNTIME-AUTH-FIX-2026.09.30.1",
+ preservesStorageKey:"an_nhien_math_v2",host:"github-pages",
+ fixes:["GAS compatibility","getAppBuildInfo","getRuntimeHealth","Firebase auth diagnostics"]
+};
 </script>
 
 </body></html>
