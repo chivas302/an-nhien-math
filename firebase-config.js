@@ -1,12 +1,8 @@
-/* V3.71 Firebase configuration
-Replace ONLY the values below using Firebase Console > Project settings > Your apps > Web app.
-This config is public web configuration, not a service-account secret.
-*/
 window.AN_NHIEN_FIREBASE_CONFIG = {
-  apiKey: "PASTE_FIREBASE_API_KEY",
-  authDomain: "PASTE_PROJECT_ID.firebaseapp.com",
-  projectId: "PASTE_PROJECT_ID",
-  storageBucket: "PASTE_PROJECT_ID.firebasestorage.app",
-  messagingSenderId: "PASTE_MESSAGING_SENDER_ID",
-  appId: "PASTE_APP_ID"
+  apiKey: "API_KEY_CUA_ANH",
+  authDomain: "an-nhien-math.firebaseapp.com",
+  projectId: "an-nhien-math",
+  storageBucket: "an-nhien-math.firebasestorage.app",
+  messagingSenderId: "677207963652",
+  appId: "APP_ID_CUA_ANH"
 };
