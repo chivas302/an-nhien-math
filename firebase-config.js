@@ -1,4 +1,4 @@
-const firebaseConfig = {
+window.AN_NHIEN_FIREBASE_CONFIG = {
   apiKey: "AIzaSyChzi2M0DNxUYTgHWLD_uceXuMPv1z1Qro",
   authDomain: "an-nhien-math.firebaseapp.com",
   projectId: "an-nhien-math",
